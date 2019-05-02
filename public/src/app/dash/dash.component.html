@@ -1,0 +1,62 @@
+<div class="header">
+  <h3>What to do...</h3>
+  <hr>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="container">
+        <app-make-duel *ngIf="makeDuel" [heroCreator]="hero" (back)="trigger()"></app-make-duel>
+        <div class="row" *ngIf="!makeDuel">
+          <div class="col-12">
+            <h5>Start a new duel!</h5>
+            <button (click)="newDuel()" class="btn offset-1">I challenge thee!</button>
+          </div>
+          <div class="col-12">
+            <hr>
+            <h5>Find a duel!</h5>
+            <!-- Get all duels, then display where opponent = undefined -->
+            <div class="duelzz">
+              <div class="card stuff" *ngFor="let duel of duels">
+                <div class="card-body" [ngStyle]="{'background-color': duel.creator[0]._id==hero._id ? 'teal' : 'green'}">
+                  <h5>{{duel.name}}</h5>
+                  <button class="btn" (click)="joinDuel(duel, hero)" *ngIf="!(duel.creator[0]._id==hero._id) && !duel.opponent.name">Join</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 profile">
+      <h5>Check out your hero</h5>
+      <img src="{{hero.img}}" alt="hero_pic">
+      <h6>{{hero.name}}</h6>
+      <h6 class="capitalize">{{hero.race}} {{hero.job}}</h6>
+      <h6>Rating: {{hero.rating}}</h6>
+      <br>
+      <p>Stats</p>
+      <ul>
+        <li>Health: {{hero.health}}</li>
+        <li>Strength: {{hero.stats.str}}</li>
+        <li>Intelligence: {{hero.stats.int}}</li>
+        <li>Dexterity: {{hero.stats.dex}}</li>
+        <li>Charisma: {{hero.stats.char}}</li>
+        <li>Defense: {{hero.stats.def}}</li>
+        <li>Luck: {{hero.stats.luck}}</li>
+      </ul>
+      <br>
+      <p>Equipment</p>
+      <h6>Gold: {{hero.gold}}</h6>
+      <h6>Gear:</h6>
+      <ul *ngFor="let item of hero.items">
+        <li>{{item.name}}</li>
+        <li class="gray">{{item.desc}}</li>
+        <li class="gray">{{item.stat}}</li>
+      </ul>
+      <br>
+      <br>
+      <p style="font-size:10px">Account ID: {{hero._id}}</p>
+    </div>
+  </div>
+</div>

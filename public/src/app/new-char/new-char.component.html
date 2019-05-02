@@ -1,0 +1,120 @@
+<form (submit)="newChar(char)">
+  <div class="header">
+    <h1>Roll a stat sheet</h1>
+    <button [routerLink]="['/']" class="btn float-right">Home</button>
+    <hr>
+
+    {{char | json}}
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="red">{{errors.message}}</p>
+        <div *ngIf="name.errors && (name.dirty || name.touched)">
+          <div [hidden]="!name.errors.required">
+            <p class="red">Name is required!</p>
+          </div>
+          <div [hidden]="!name.errors.minlength">
+            <p class="red">Name must be 2 characters long!</p>
+          </div>
+        </div>
+        <div *ngIf="race.errors && (race.dirty || race.touched)">
+          <div [hidden]="!race.errors.required">
+            <p class="red">Race is required!</p>
+          </div>
+        </div>
+        <div *ngIf="job.errors && (job.dirty || job.touched)">
+            <div [hidden]="!job.errors.required">
+              <p class="red">Class is required!</p>
+            </div>
+          </div>
+        <div *ngIf="sex.errors && (sex.dirty || sex.touched)">
+          <div [hidden]="!sex.errors.required">
+            <p class="red">Gender is required!</p>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-10">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="char.name" required minlength="2" class="form-control" [(ngModel)]="char.name"
+                #name="ngModel">
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Gender</label>
+                  <select required name="char.sex" class="form-control" [(ngModel)]="char.sex" #sex="ngModel">
+                    <option value=""></option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Race</label>
+                  <select size="3" name="char.race" required class="form-control" [(ngModel)]="char.race" #race="ngModel">
+                    <option value="human">Human</option>
+                    <option value="elf">Elf</option>
+                    <option value="halfElf">Half-Elf</option>
+                    <option value="orc">Orc</option>
+                    <option value="halfOrc">Half-Orc</option>
+                    <option value="dwarf">Dwarf</option>
+                    <option value="gnome">Gnome</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Class</label>
+              <select size="3" name="char.job" required class="form-control" [(ngModel)]="char.job" #job="ngModel">
+                <option value="warrior">Warrior</option>
+                <option value="ranger">Ranger</option>
+                <option value="wizard">Wizard</option>
+                <option value="paladin">Paladin</option>
+                <option value="bard">Bard</option>
+                <option value="thief">Thief</option>
+                <option value="necro">Necromancer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Image URL</label>
+              <input type="text" name="char.img" class="form-control" [(ngModel)]="char.img" #img="ngModel">
+            </div>
+            <div class="form-group float-right">
+              <button type="button" class="btn" (click)="rollStats(char)">Roll Stats</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div *ngIf="rolly">
+          <h3>Stats</h3>
+          <ul>
+          <li>Health: {{char.health}}</li>
+          <li>Strength: {{char.stats.str}}</li>
+          <li>Intelligence: {{char.stats.int}}</li>
+          <li>Dexterity: {{char.stats.dex}}</li>
+          <li>Charisma: {{char.stats.char}}</li>
+          <li>Defense: {{char.stats.def}}</li>
+          <li>Luck: {{char.stats.luck}}</li>
+        </ul>
+        <br>
+        <h3>Equipment</h3>
+        <p class="txt">Gold: {{char.gold}}</p>
+        <ul>
+          <li>{{char.items[0].name}}</li>
+          <li class="gray">{{char.items[0].desc}}</li>
+          <li class="gray">{{char.items[0].stat}}</li>
+        </ul>
+        <div class="form-group float-right">
+          <input type="submit" value="Create Hero" class="btn">
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</form>

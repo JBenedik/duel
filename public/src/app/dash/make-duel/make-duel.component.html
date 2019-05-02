@@ -1,0 +1,55 @@
+<form #f="ngForm" (submit)="newDuel(duel)">
+  <div class="row">
+    <div class="col">
+      <div class="header">
+        <h3>Gimme them deets</h3>
+        <button type="button" (click)="backClicked()" class="btn float-right">Back</button>
+      </div>
+      <p class="red">{{errors.message}}</p>
+      <div *ngIf="name.errors && (name.dirty || name.touched)">
+        <div [hidden]="!name.errors.required">
+          <p class="red">Name is required!</p>
+        </div>
+        <div [hidden]="!name.errors.minlength">
+          <p class="red">Name must be 3 characters long!</p>
+        </div>
+      </div>
+      <div *ngIf="wager.errors && (wager.dirty || wager.touched)">
+        <div [hidden]="!wager.errors.required">
+          <p class="red">Wager is required!</p>
+        </div>
+      </div>
+      <div *ngIf="duel.wager < 0 && (wager.dirty || wager.touched)">
+        <p class="red">Don't be a dick</p>
+      </div>
+      <div *ngIf="duel.wager > heroCreator.gold && (wager.dirty || wager.touched)">
+        <p class="red">You're too poor for that</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="duel.name" required minlength="3" class="form-control" [(ngModel)]="duel.name" #name="ngModel">
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="duel.private" value="true" [(ngModel)]="duel.private">
+              <label class="form-check-label">Private</label>
+            </div>
+            <div class="form-group" *ngIf="duel.private">
+              <label>Password</label>
+              <input type="text" name="duel.password" [(ngModel)]="duel.password" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Wager</label>
+              <input type="number" required class="form-control" name="duel.wager" [(ngModel)]="duel.wager" #wager="ngModel">
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn" value="Havast Ye!">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

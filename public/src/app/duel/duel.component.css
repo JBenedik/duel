@@ -1,0 +1,79 @@
+.logo{
+    height: 20%;
+    display: inline-block;
+}
+h1{
+    display: inline-block;
+}
+
+.btn {
+    background-color: #6A70B7;
+    color: white;
+    border-bottom: 5px solid #4b519b;
+	text-shadow: 0px -2px #4b519b;
+}
+
+.btn:active {
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid #4b519b;
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding-left: 15px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.header {
+    margin-bottom: 10px;
+    height: 20%;
+}
+
+.charInfo {
+    border: 10px #006600 outset;
+    padding: 15px;
+    max-height: 60vh;
+}
+.oppoInfo{
+    border: 10px #660000 inset;
+    max-height: 60vh;
+}
+img.hero {
+    margin-top: 5px;
+    max-height: 100%;
+    max-width: 100%;
+    border-width:7px;
+    border-style:ridge;
+    border-color: #6A70B7; 
+}
+.frame{
+    max-height: 20vh
+}
+div.actions{
+    margin-top: 20px;
+}
+
+button.action{
+    margin-right: 10px;
+}
+
+div.top{
+    margin-bottom: 1%;
+    height: 50%;
+}
+
+div.progress{
+    margin-top: 30px;
+}
+
+.progress-bar{
+    font-size: 20px;
+    color: black;
+}

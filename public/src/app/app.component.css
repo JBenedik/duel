@@ -1,0 +1,8 @@
+.biggy{
+    height: 95vh;
+}
+.jumbotron{
+    background: linear-gradient(to bottom right, #ecce93 0%, #d99d26 100%);
+    box-shadow: 6px 6px 5px black;
+    padding-top: 25px;
+}

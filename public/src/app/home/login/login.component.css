@@ -1,0 +1,28 @@
+label {
+    font-family: Luminari;
+}
+
+input.btn {
+    float: right;
+}
+
+.btn {
+    background-color: #6A70B7;
+    color: white;
+    border-bottom: 5px solid #4b519b;
+    text-shadow: 0px -2px #4b519b;
+    font-family: Luminari;
+}
+
+.btn:active
+{
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid #4b519b;
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.error{
+    color: red;
+}

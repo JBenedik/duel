@@ -1,0 +1,15 @@
+<form (submit)="login(info)">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div class="form-group">
+          <label>Input Character ID</label>
+          <p><span class="error">{{errors.message}}</span></p>
+          <input type="text" class="form-control" name="info.id"[(ngModel)]="info.id">
+        </div>
+        <button [routerLink]="['/newchar']" class="btn">New Character</button>
+        <input type="submit" value="Submit" class="btn">
+      </div>
+    </div>
+  </div>
+</form>

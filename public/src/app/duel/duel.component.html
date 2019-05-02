@@ -1,0 +1,110 @@
+<div class="header">
+  <div class="row">
+    <div class="col-9">
+      <h1>Let's</h1><img class="logo" src="../../assets/img/duel_logo.png" alt="duel_logo">
+    </div>
+    <div class="col">
+      <button type="button" (click)="quit()" [routerLink]="['/dash',char._id]" class="btn">Forfeit</button>
+    </div>
+  </div>
+</div>
+<div class="body" *ngIf="!over">
+  <div class="message">
+    <h3 *ngIf="!full">Waiting for opponent!</h3>
+  </div>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-7">{{display}}</div>
+    <div class="col"></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-5 charInfo">
+        <div class="row top">
+          <div class="col frame">
+            <img class="hero" src="{{char.img}}" alt="pic">
+          </div>
+          <div class="col">
+            <h4 class="text-right">{{char.name}}</h4>
+            <h4 class="capitalize text-right">{{char.race}} {{char.job}}</h4>
+          </div>
+        </div>
+        <h5>Stats</h5>
+        <div class="row">
+          <div class="col-5">
+            <ul>
+              <li>Strength: {{char.stats.str}}</li>
+              <li>Intelligence: {{char.stats.int}}</li>
+              <li>Dexterity: {{char.stats.dex}}</li>
+            </ul>
+          </div>
+            <div class="col-5">  
+            <ul>
+              <li>Charisma: {{char.stats.char}}</li>
+              <li>Defense: {{char.stats.def}}</li>
+              <li>Luck: {{char.stats.luck}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="progress hp" style="height: 45px;">
+          <div class="progress-bar bg-success" role="progressbar" [style.width]="(char.health/char.stats.hp)*100+'%'" attr.aria-valuenow="{{char.health}}" attr.aria-valuemin="0" attr.ariavaluemax="{{char.stats.hp}}">{{char.health}} / {{char.stats.hp}}</div>
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col-5 oppoInfo" *ngIf="oppo.name">
+          <div class="row top">
+            <div class="col frame">
+              <img class="hero" src="{{oppo.img}}" alt="pic">
+            </div>
+            <div class="col">
+              <h4 class="text-right">{{oppo.name}}</h4>
+              <h4 class="capitalize text-right">{{oppo.race}} {{oppo.job}}</h4>
+            </div>
+          </div>
+          <h5>Stats</h5>
+          <div class="row">
+            <div class="col-5">
+              <ul>
+                <li>Strength: {{oppo.stats.str}}</li>
+                <li>Intelligence: {{oppo.stats.int}}</li>
+                <li>Dexterity: {{oppo.stats.dex}}</li>
+              </ul>
+            </div>
+              <div class="col-5">  
+              <ul>
+                <li>Charisma: {{oppo.stats.char}}</li>
+                <li>Defense: {{oppo.stats.def}}</li>
+                <li>Luck: {{oppo.stats.luck}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="progress hp" style="height: 45px;">
+            <div class="progress-bar bg-danger" role="progressbar" [style.width]="((oppo.health/oppo.stats.hp)*100)+'%'" attr.aria-valuenow="{{oppo.health}}" attr.aria-valuemin="0" attr.ariavaluemax="{{oppo.stats.hp}}">{{oppo.health}} / {{oppo.stats.hp}}</div>
+          </div>
+        </div>
+      <div class="col"></div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col" *ngIf="!turn"></div>
+      <div class="col" *ngIf="turn">
+        <button type="button" (click)="action1()" class="btn action">{{char.moves[0].name}}</button>
+        <button type="button" (click)="action2()" class="btn action">{{char.moves[1].name}}</button>
+        <button type="button" (click)="action3()" class="btn action">{{char.moves[2].name}}</button>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</div>
+<div class="row" *ngIf="over">
+  <div class="col-2"></div>
+  <div class="col">
+    <h2>{{final}}</h2>
+    <br><br>
+    <button type="button" (click)="winz()" class="btn">End game.</button>
+  </div>
+  <div class="col-2"></div>
+</div>

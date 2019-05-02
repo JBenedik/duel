@@ -1,0 +1,28 @@
+<div class="header">
+  <h1 class="banner">Welcome to</h1><img src="../../assets/img/duel_logo.png" alt="duel_logo">
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col-9">
+      <p>As you ready for a night of D&D, your fellow adventurers enter a vicious argument. You see, the DM's mom forgot to stock Mountain Dew, and one must venture forth to the treacherous world of 7-11. But there's only one way dignified enough to decide who will go; not rock paper scissors, nor drawing straws, this calls for a fight to the death.</p>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+<br>
+<div class="container" *ngIf="!login">
+  
+  <br>
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <button [routerLink]="['/newchar']" class="btn purp" >New Player</button>
+    </div>
+    <div class="col">
+      <button class="btn purp" (click)="loginBtn()">Returning Player</button>
+    </div>
+    <div class="div col"></div>
+  </div>
+</div>
+<app-login *ngIf="login"></app-login>
