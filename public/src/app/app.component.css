@@ -1,5 +1,5 @@
 .biggy{
-    height: 95vh;
+    min-height: 95vh;
 }
 .jumbotron{
     background: linear-gradient(to bottom right, #ecce93 0%, #d99d26 100%);
